@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
-    "nuxt": "^2.14.0"
+    "@nuxtjs/proxy": "^2.0.1",
+    "nuxt": "^2.14.0",
+    "nuxt-socket-io": "^1.1.12",
+    "socket.io": "^3.0.1",
+    "socket.io-client": "^3.0.1"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.11.2"

@@ -5,12 +5,8 @@
     </v-flex>
     <v-flex xs12>
       <v-card>
-      <div>
-        <br />
-        test
-      </div>
       <div class="message" v-for="(msg, index) in messages" :key="index">
-          {{ msg }}
+          Chat: {{ msg }}
         </div>
         <div>
            <v-text-field autocomplete="off" v-model="message" />
@@ -24,7 +20,7 @@
 
 
 <script>
-  import socket from '../plugins/socket.io'
+  import socket from '../plugins/socket.io.js'
   export default {
     data() {
       return {
