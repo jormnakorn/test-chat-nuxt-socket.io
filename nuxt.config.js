@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import socket from './plugins/socket.io'
 
 export default {
   /*
@@ -6,6 +7,7 @@ export default {
   ** See https://nuxtjs.org/api/configuration-mode
   */
   mode: 'universal',
+  // mode: 'universal',
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
@@ -55,12 +57,41 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
+    'socket.io',
+    'socket.io-client',
+    // 'nuxt-socket-io',
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    baseURL: '',
+    // baseURL: 'https://picsum.photos',
+    proxyHeaders: false,
+    credentials: false,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    }
+  },
+  proxy: {
+    // '/api/': 'https://unsplash.com',
+    // '/picsum': 'https://picsum.photos',
+    // '/picsum': { target: 'https://picsum.photos', pathRewrite: {'^/picsum': ''} }
+  },
+
+
+
+  // nuxt-socket.io
+  io: {
+    // module options
+    sockets: [{
+      name: 'main',
+      url: 'http://localhost:3000'
+    }]
+  },
+
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -68,7 +99,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
